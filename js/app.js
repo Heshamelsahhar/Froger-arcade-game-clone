@@ -2,7 +2,7 @@
 
 // Enemies our player must avoid
 
-
+let curscore = 0;
 var Enemy = function(i, j, sp) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -28,6 +28,8 @@ Enemy.prototype.update = function(dt) {
     {
         player.x = 200;
         player.y = 400;
+        document.querySelector(".score").innerText = `Score: 0`;
+        curscore = 0;
     }
 };
 
@@ -61,6 +63,7 @@ Player.prototype.handleInput = function(dir) {
     if (this.y === -25){
         this.x = 200;
         this.y = 400;
+        document.querySelector(".score").innerText = `Score: ${++curscore}`;
     }
 
 };

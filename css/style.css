@@ -1,5 +1,12 @@
+h2 {
+margin: 0;
+margin-right: 30%;
+font-family: cursive;
+color: cadetblue;
+}
 body {
     text-align: center;
+    margin: 0;
 }
 .modal {
     width: 100%;
