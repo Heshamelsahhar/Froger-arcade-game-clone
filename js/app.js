@@ -18,12 +18,13 @@ var Enemy = function(i, j, sp) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
-
+// Checking if it passed the frame
     if (this.x > 505)
     {
-        this.x = - 100;
-        this.speed = Math.floor(Math.random() * 500)+ 75;
+        this.x = - 100; // Returning to original position
+        this.speed = Math.floor(Math.random() * 500)+ 75; // Changign speed
     }
+// Checking Collisions
     if ( player.x < this.x + 60 && this.x < player.x + 40 && player.y < this.y + 25 && 30 + player.y > this.y )
     {
         player.x = 200;
@@ -56,10 +57,12 @@ Player.prototype.update = function(s) {
 Player.prototype.render = function(){ ctx.drawImage(Resources.get(this.sprite), this.x, this.y); };
 
 Player.prototype.handleInput = function(dir) {
-    if (dir === 'left' && this.x - 100 >= 0) this.x -= 100;
+    // handling moves
+    if (dir === 'left' && this.x - 100 >= 0) this.x -= 100; 
     else if (dir === 'right' && this.x + 100 <= 400  ) this.x += 100;
     else if (dir === 'up' && this.y - 85 >= -100 ) this.y -= 85;
     else if (dir === 'down' && this.y + 85 <= 450) this.y += 85; 
+    // Check Reaching water
     if (this.y === -25){
         this.x = 200;
         this.y = 400;
